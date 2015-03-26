@@ -2,5 +2,5 @@ module Main
 where
 
 main = do
-  putStrLn "hello"
+  putStrLn "hello world"
   

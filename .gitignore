@@ -14,3 +14,4 @@ bin/
 .cabal-sandbox/
 cabal.sandbox.config
 dist/
+data/
