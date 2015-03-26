@@ -69,3 +69,8 @@ executable df
   hs-source-dirs:      src
   main-is:             DilutionFactor.hs
   build-depends:       base >=4.7, Safe >=0.1
+
+executable translate
+  hs-source-dirs:      src
+  main-is:             Translate.hs
+  build-depends:       base >=4.7, text >=1.0
