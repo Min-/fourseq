@@ -57,7 +57,7 @@ executable fourseq
   -- other-extensions:    
   
   -- Other library packages from which modules are imported.
-  build-depends:       base >=4.7 && <4.8
+  build-depends:       base >=4.7 
   
   -- Directories containing source files.
   hs-source-dirs:      src
@@ -74,3 +74,10 @@ executable translate
   hs-source-dirs:      src
   main-is:             Translate.hs
   build-depends:       base >=4.7, text >=1.0
+
+executable list2fa
+  hs-source-dirs:      src
+  main-is:             ListToFa.hs
+  build-depends:       base >=4.7, text >=1.0, containers >= 0.5
+
+
