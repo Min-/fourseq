@@ -19,6 +19,7 @@ import DataTypes
 import Barcodes (constBC)
 import qualified Data.Text as T
 import qualified Data.Text.IO as TextIO
+import Control.Applicative
 
 --input samfile from system sam format file
 importSamFile :: FilePath -> IO [Reads]
@@ -78,11 +79,15 @@ outputFasta filename fa = do
   TextIO.writeFile (filename::FilePath) $ T.unlines $ map (\x->T.concat [faname x, "\n" , faseq x]) fa
 
 importFastq filename = do
-  TextIO.readFile filename >>= return . map (reconstructFastq . T.lines). tail . T.splitOn "@"
-    where reconstructFastq [h, s, s2, q] = Fastq (T.concat ["@", h]) s s2 q
+  T.lines <$> TextIO.readFile filename >>= return . constructFq
+
+constructFq [] = []
+constructFq (a:b:c:d:xs) = reconstructFastq [a, b, c, d] : constructFq xs
+  where reconstructFastq [h, s, s2, q] = Fastq h s s2 q
 
 outputFastq filename fq = do
   TextIO.writeFile (filename::FilePath) $ T.unlines $ map fromFastq fq
     where fromFastq x = T.unlines [fqname x, fqseq x, fqstrand x, fqqual x]
+
 
 

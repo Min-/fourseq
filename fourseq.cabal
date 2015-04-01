@@ -80,4 +80,10 @@ executable list2fa
   main-is:             ListToFa.hs
   build-depends:       base >=4.7, text >=1.0, containers >= 0.5
 
+executable filterLength
+  hs-source-dirs:      src
+  main-is:             FilterLength.hs
+  build-depends:       base >=4.7, text >=1.0, containers >= 0.5
+
+
 
