@@ -60,30 +60,29 @@ executable fourseq
   build-depends:       base >=4.7 
   
   -- Directories containing source files.
-  hs-source-dirs:      src
+  hs-source-dirs:      src/utils
   
   -- Base language which the package is written in.
   default-language:    Haskell2010
 
 executable df
-  hs-source-dirs:      src
+  hs-source-dirs:      src/utils
   main-is:             DilutionFactor.hs
   build-depends:       base >=4.7, Safe >=0.1
 
 executable translate
-  hs-source-dirs:      src
+  hs-source-dirs:      src/utils
   main-is:             Translate.hs
   build-depends:       base >=4.7, text >=1.0
 
 executable list2fa
-  hs-source-dirs:      src
+  hs-source-dirs:      src/utils
   main-is:             ListToFa.hs
   build-depends:       base >=4.7, text >=1.0, containers >= 0.5
 
 executable filterLength
-  hs-source-dirs:      src
+  hs-source-dirs:      src/utils
   main-is:             FilterLength.hs
   build-depends:       base >=4.7, text >=1.0, containers >= 0.5
-
 
 
