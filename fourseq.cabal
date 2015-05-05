@@ -70,6 +70,11 @@ executable df
   main-is:             DilutionFactor.hs
   build-depends:       base >=4.7, Safe >=0.1
 
+executable sam2Fastq
+  hs-source-dirs:      src/utils
+  main-is:             SamToFastq.hs
+  build-depends:       base >=4.7, Safe >=0.1, text>=1.0
+
 executable translate
   hs-source-dirs:      src/utils
   main-is:             Translate.hs

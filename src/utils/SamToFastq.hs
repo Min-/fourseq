@@ -19,12 +19,11 @@ instructions = putStrLn "\nsamToFastq: Convert unmapped sam files to fastq files
 
 interactive = do  
   paths <- Sys.getArgs
+  let input = Just (head paths)
+  let output = Just (last paths)
   if length paths /= 2
-  then return (Nothing, Nothing)
-  else 
-    let input = Just (head paths)
-        output = Just (last paths)
-    in return (input, output)
+    then do return (Nothing, Nothing)
+    else do return (input, output)
 
 test (input, output)
   | and [input == Nothing, output == Nothing] = putStrLn "The input needs to be two files, input sam and output fastq. \n"
