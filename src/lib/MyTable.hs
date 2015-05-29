@@ -9,9 +9,10 @@
   all the text will be in Text type
 -}
 
-module Tables
+module MyTable
   ( importTable
   , smartTable
+  , writeTable
   , column
   , cols
   )
@@ -48,8 +49,13 @@ smartTable input = do
   then do importTable "\t" input
   else do importTable "," input
 
+writeTable output table = do
+  let result = T.unlines $ map untab table
+  TextIO.writeFile output result
+
+
 -- start from 1
 column n = take 1 . drop (n - 1)
 
-cols n = map (column n)
+cols n = concat . map (column n)
   

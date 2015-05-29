@@ -29,6 +29,7 @@ module MyText
     , cleanQuote
     , eachLine
     , countElem
+    , toPair
     )
 where
 
@@ -122,3 +123,4 @@ countLines = undefined
 
 allTrue _ = True
 
+toPair [a, b] = (a, b)
