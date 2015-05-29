@@ -22,7 +22,9 @@ module MyText
     , isEmpty
     , squeeze
     , tab
+    , comma
     , untab
+    , uncomma
     , eachLine
     , countElem
     )
@@ -86,6 +88,12 @@ tab = T.splitOn "\t"
 
 untab :: [T.Text] -> T.Text
 untab = T.intercalate "\t"
+
+comma :: T.Text -> [T.Text]
+comma = T.splitOn ","
+
+uncomma :: [T.Text] -> T.Text
+uncomma = T.intercalate ","
 
 -- high order
 eachLine :: (T.Text -> T.Text) -> T.Text -> T.Text
