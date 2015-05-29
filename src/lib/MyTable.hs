@@ -12,6 +12,8 @@
 module Tables
   ( importTable
   , smartTable
+  , column
+  , cols
   )
 where
 
@@ -45,4 +47,9 @@ smartTable input = do
   if t > c
   then do importTable "\t" input
   else do importTable "," input
+
+-- start from 1
+column n = take 1 . drop (n - 1)
+
+cols n = map (column n)
   
