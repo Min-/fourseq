@@ -25,6 +25,8 @@ module MyText
     , comma
     , untab
     , uncomma
+    , cleanWinNl
+    , cleanQuote
     , eachLine
     , countElem
     )
@@ -94,6 +96,9 @@ comma = T.splitOn ","
 
 uncomma :: [T.Text] -> T.Text
 uncomma = T.intercalate ","
+
+cleanWinNl = T.replace "\r" ""
+cleanQuote = T.replace "\"" ""
 
 -- high order
 eachLine :: (T.Text -> T.Text) -> T.Text -> T.Text
