@@ -47,7 +47,7 @@ outputSamFile s filename = do
 --for each Read, take the fields of fastq and combine by "\n", use foldl' for list add them together as a list of Data.Text
 samOutputFastq :: FilePath -> [Reads] -> IO ()
 samOutputFastq f rs = TextIO.writeFile (f::FilePath) fastq 
-  where fastq = T.unlines $ map (\r-> T.concat ["@", (qname r), "\n", samseq r, "\n", "+", "\n",qual r]) rs
+  where fastq = T.unlines $ map (\r-> T.concat ["@", (qname r), "\n", samseq r, "\n", "+", "\n", qual r]) rs
 
 samOutputFasta :: FilePath -> [Reads] -> IO ()
 samOutputFasta f rs = TextIO.writeFile (f::FilePath) fasta
@@ -81,6 +81,7 @@ outputFasta filename fa = do
 importFastq filename = do
   T.lines <$> TextIO.readFile filename >>= return . constructFq
 
+constructFq :: [T.Text] -> [Fastq]
 constructFq [] = []
 constructFq (a:b:c:d:xs) = reconstructFastq [a, b, c, d] : constructFq xs
   where reconstructFastq [h, s, s2, q] = Fastq h s s2 q
