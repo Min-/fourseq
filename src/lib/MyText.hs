@@ -1,12 +1,13 @@
 {-#LANGUAGE OverloadedStrings#-}
 
 {-
-  routine functions for Data.Text manipulation.
+  Routine functions for Data.Text manipulation.
 
   Min Zhang
 
-  2/6/2015
+  Feb 6, 2015
 
+  v.0.1.1 (Oct 9, 2015): add Type signature to all functions
 -}
 
 module MyText
@@ -98,29 +99,37 @@ comma = T.splitOn ","
 uncomma :: [T.Text] -> T.Text
 uncomma = T.intercalate ","
 
+cleanWinNl :: T.Text -> T.Text
 cleanWinNl = T.replace "\r" ""
+
+cleanQuote :: T.Text -> T.Text
 cleanQuote = T.replace "\"" ""
 
 -- high order
 eachLine :: (T.Text -> T.Text) -> T.Text -> T.Text
 eachLine f = T.unlines . map f . T.lines
 
+countElem :: (Ord k, Num a) => (k -> Bool) -> [k] -> [(k, a)]
 countElem f e = M.toList $ M.fromListWith (+) [(c, 1) | c <- input]
                  where input = filter f e
        
-
+countChar :: Num a => T.Text -> [(Char, a)]
 countChar t = countElem allTrue input
             where input = T.unpack t
 
+countWords :: Num a => T.Text -> [(T.Text, a)]
 countWords s = countElem allTrue input
             where input = T.words s
 
+countLetter :: Num a => T.Text -> [(Char, a)]
 countLetter t = countElem C.isLetter input
             where input = T.unpack t
 
 countSentence = undefined
 countLines = undefined
 
+allTrue :: t -> Bool
 allTrue _ = True
 
+toPair :: [t] -> (t, t)
 toPair [a, b] = (a, b)
