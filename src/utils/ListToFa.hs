@@ -12,8 +12,8 @@ module Main
 where
 
 
-import qualified Data.Text as T
-import qualified Data.Text.IO as TextIO
+import qualified Data.Text.Lazy as T
+import qualified Data.Text.Lazy.IO as TextIO
 import Data.List (foldl')
 import System.Environment
 import Control.Applicative

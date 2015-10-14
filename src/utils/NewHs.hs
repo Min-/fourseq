@@ -54,11 +54,13 @@ process (filetype, filename)
 lhsFormat =
   ["> {-#LANGUAGE OverloadedStrings#-}"
   , ""
+  , "{-"
   , "Project name: "
   , "Min Zhang"
   , "Date: "
   , "Version: "
   , "README: "
+  , "-}"
   , ""
   , "> import qualified Data.Text.Lazy as T" 
   , "> import qualified Data.Text.Lazy.IO as TextIO"

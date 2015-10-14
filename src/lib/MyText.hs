@@ -8,6 +8,7 @@
   Feb 6, 2015
 
   v.0.1.1 (Oct 9, 2015): add Type signature to all functions
+  v.0.1.2 (Oct 14, 2015): switch from strict Data.Text to Data.Text.Lazy
 -}
 
 module MyText
@@ -18,7 +19,6 @@ module MyText
     , readInt
     , readDouble
     , chop
-    --, chr
     , clear
     , isEmpty
     , squeeze
@@ -30,21 +30,22 @@ module MyText
     , cleanQuote
     , eachLine
     , countElem
-    , toPair
+    , countWords
+    , countLetter
     )
 where
 
 import qualified Data.Text.Lazy as T 
 import qualified Data.Char as C
-import Control.Applicative
 import qualified Data.Map as M
+import qualified GHC.Int as GHC.Int
 
 capitalize :: T.Text -> T.Text
 capitalize x = T.cons (C.toUpper $ T.head x) (T.toLower $ T.tail x)
 
 --Indexing
-range :: (Int, Int) -> T.Text -> T.Text 
-range (s, e) = T.take (e-s+1) . T.drop s
+range :: Integral a => (GHC.Int.Int64, a) -> T.Text -> T.Text
+range (s, e) = T.take ((fromIntegral e) - (fromIntegral s) + 1 ) . T.drop s
 
 --read and show numbers
 toInt :: T.Text -> Int
@@ -65,10 +66,6 @@ chop "" = ""
 chop t
   |T.last t == '\n' = if T.last (T.init t) == '\r' then (T.init $ T.init t) else T.init t
   |otherwise = T.init t
-
-chr :: T.Text -> T.Text
-chr "" = ""
-chr t = T.singleton $ T.head t
 
 clear :: T.Text -> T.Text
 clear _ = ""
@@ -125,11 +122,6 @@ countLetter :: Num a => T.Text -> [(Char, a)]
 countLetter t = countElem C.isLetter input
             where input = T.unpack t
 
-countSentence = undefined
-countLines = undefined
-
-allTrue :: t -> Bool
+allTrue :: a -> Bool
 allTrue _ = True
 
-toPair :: [t] -> (t, t)
-toPair [a, b] = (a, b)

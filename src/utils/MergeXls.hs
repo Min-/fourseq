@@ -8,7 +8,6 @@ Version: v.0.1.0
 README: Merge columns from excel files. 
         This program aims for more general file merging situations.
         However, for the time being, only merge files with exact same first column (row names), have same length (row number), and only take second column. Such as htcount output, and new Ion Proton platform RNA-seq read count output.
-        This program is written for TCH project.
 -}
 
 import qualified Data.Text.Lazy as T

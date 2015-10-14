@@ -5,13 +5,15 @@
   3-26-2015
 
   Translate DNA/RNA to protein aa sequence.
+
+  v.0.1.1 (Oct 14, 2015): switch from Data.Text to Data.Text.Lazy 
 -}
 
 module Main
 where
 
-import qualified Data.Text.IO as TextIO
-import qualified Data.Text as T
+import qualified Data.Text.Lazy.IO as TextIO
+import qualified Data.Text.Lazy as T
 import Control.Applicative
 import System.Environment
 import Data.Monoid

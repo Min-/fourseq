@@ -1,5 +1,16 @@
 {-#LANGUAGE OverloadedStrings#-}
 
+{-
+  Min Zhang
+  Oct 14, 2015
+
+  IO functions for sequencing data types.
+
+  v.0.1.0 (Oct 14, 2015): switch from Data.Text to Data.Text.Lazy 
+-}
+
+
+
 module IO
   ( importSamFile
   , samOutputFastq
@@ -17,8 +28,8 @@ where
 
 import DataTypes
 import Barcodes (constBC)
-import qualified Data.Text as T
-import qualified Data.Text.IO as TextIO
+import qualified Data.Text.Lazy as T
+import qualified Data.Text.Lazy.IO as TextIO
 import Control.Applicative
 
 --input samfile from system sam format file

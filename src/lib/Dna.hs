@@ -1,5 +1,16 @@
 {-#LANGUAGE OverloadedStrings#-}
 
+{-
+  Min Zhang
+  Oct 14, 2015
+  
+  Functions on DNA sequences
+
+  v.0.1.0 (Oct 14, 2015): switch from Data.Text to Data.Text.Lazy 
+-}
+
+
+
 module Dna
   (  copySeq
    , complSeq
@@ -10,7 +21,7 @@ module Dna
   )
 where
 
-import qualified Data.Text as T
+import qualified Data.Text.Lazy as T
 import Data.List (genericLength)
 
 --with copySeq together, clean up DNA input, remove not ATGC, turn everything into uppercase 

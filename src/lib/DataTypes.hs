@@ -9,12 +9,13 @@
 
 -- copy from IonTorrent, template for 4C-Seq data analysis
 -- 11-25-14 modified add Fasta for 4C analysis
+  v.0.1.1 (Oct 14, 2015): switch from Data.Text to Data.Text.Lazy
 -}
 
 module DataTypes
 where
 
-import qualified Data.Text as T
+import qualified Data.Text.Lazy as T
 
 data Sequence = Sequence
 
@@ -72,10 +73,10 @@ class Countable a where
   count :: a->Int
 
 instance Countable Reads where
-  count = T.length . samseq
+  count = fromIntegral . T.length . samseq
 
 instance Countable Fasta where
-  count = T.length . faseq
+  count = fromIntegral . T.length . faseq
 
 instance Countable Barcodes where
   count = len

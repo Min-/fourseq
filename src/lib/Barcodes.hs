@@ -6,7 +6,7 @@
 
   Revise Barcodes codes
 
-  v.0.1.0 (Oct 14, 2015) 
+  v.0.1.0 (Oct 14, 2015): switch from Data.Text to Data.Text.Lazy 
 -}
 
 
@@ -16,7 +16,7 @@ where
 
 import DataTypes
 import Dna
-import qualified Data.Text as T
+import qualified Data.Text.Lazy as T
 
 -- only use first 10 nt as primer to minimumize mismatch
 constBC :: (T.Text, T.Text, Strand) -> Barcodes
