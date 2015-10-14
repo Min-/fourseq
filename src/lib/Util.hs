@@ -11,7 +11,7 @@ README: Add type signature for all the functions
 
 
 import qualified Data.List as L
-import qualified Data.Text as T
+import qualified Data.Text.Lazy as T
 import Data.Ord (comparing)
 
 -- utility functions

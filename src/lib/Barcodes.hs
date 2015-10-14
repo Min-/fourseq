@@ -1,5 +1,16 @@
 {-#LANGUAGE OverloadedStrings#-}
 
+{-
+  Min Zhang
+  Oct 14, 2015
+
+  Revise Barcodes codes
+
+  v.0.1.0 (Oct 14, 2015) 
+-}
+
+
+
 module Barcodes
 where
 

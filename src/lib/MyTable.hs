@@ -39,8 +39,8 @@ module MyTable
   )
 where
 
-import qualified Data.Text as T 
-import qualified Data.Text.IO as TextIO
+import qualified Data.Text.Lazy as T 
+import qualified Data.Text.Lazy.IO as TextIO
 import qualified Data.Char as C
 import qualified Data.String as Str
 import Control.Applicative

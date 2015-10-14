@@ -18,7 +18,7 @@ where
 
 import qualified System.Environment as Sys
 import qualified Safe as Safe
-import qualified Data.Text as T
+import qualified Data.Text.Lazy as T
 import Data.Maybe
 
 main = do
@@ -60,8 +60,8 @@ lhsFormat =
   , "Version: "
   , "README: "
   , ""
-  , "> import qualified Data.Text as T" 
-  , "> import qualified Data.Text.IO as TextIO"
+  , "> import qualified Data.Text.Lazy as T" 
+  , "> import qualified Data.Text.Lazy.IO as TextIO"
   , "> import qualified Data.Char as C"
   , "> import Control.Applicative"
   , "> import qualified Data.List as L"

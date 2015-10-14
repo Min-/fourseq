@@ -34,7 +34,7 @@ module MyText
     )
 where
 
-import qualified Data.Text as T 
+import qualified Data.Text.Lazy as T 
 import qualified Data.Char as C
 import Control.Applicative
 import qualified Data.Map as M
