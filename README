@@ -1,7 +1,10 @@
 fourseq: Software for sequencing data analysis in Haskell.
 
 Author: Min Zhang
-Version: 0.2.0.0
+Version: 0.2.1.0
 Date: March 21, 2015
 
-Latest version: July 24, 2015
+Commit to single code base
+
+# copy executable to ./bin/
+# cp -rf ./.cabal-sandbox/bin/ ./bin/
