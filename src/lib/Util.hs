@@ -1,4 +1,7 @@
 module Util
+  ( groupCount
+  , groupPct
+  )
 where
 
 {-
@@ -15,7 +18,6 @@ import qualified Data.Text.Lazy as T
 import Data.Ord (comparing)
 
 -- utility functions
-
 groupCount :: Ord a => [a] -> [(a, Int)]
 groupCount x = zip (map head groupedOnes) (map length groupedOnes)
   where groupedOnes = groupDes x

@@ -75,7 +75,6 @@ lhsFormat =
   , "> import qualified Data.Maybe as Maybe"
   , "> import qualified Data.Foldable as F (all)"
   , "> import Data.Traversable (sequenceA)"
-  , "> import qualified Data.Dates as Dates"
   , "> import qualified Data.ByteString.Lazy.Char8 as Bl"
   , "> import qualified System.IO as IO"
   , "> import System.Environment"

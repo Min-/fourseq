@@ -20,11 +20,9 @@ import Control.Monad (fmap)
 import Data.Ord (comparing)
 import Data.Function (on)
 import qualified Safe as S
-import qualified Data.HashMap.Lazy as M
 import qualified Data.Maybe as Maybe
 import qualified Data.Foldable as F (all)
 import Data.Traversable (sequenceA)
-import qualified Data.Dates as Dates
 import qualified Data.ByteString.Lazy.Char8 as Bl
 import qualified System.IO as IO
 import System.Environment

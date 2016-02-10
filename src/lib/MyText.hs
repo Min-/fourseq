@@ -15,9 +15,11 @@ module MyText
     ( capitalize
     , range
     , toInt
+    , toInt'
     , toDouble
     , readInt
     , readDouble
+    , readDouble'
     , chop
     , clear
     , isEmpty
@@ -36,9 +38,11 @@ module MyText
 where
 
 import qualified Data.Text.Lazy as T 
+import qualified Data.Text as TS
 import qualified Data.Char as C
 import qualified Data.Map as M
 import qualified GHC.Int as GHC.Int
+import qualified Data.Double.Conversion.Text as Db
 
 capitalize :: T.Text -> T.Text
 capitalize x = T.cons (C.toUpper $ T.head x) (T.toLower $ T.tail x)
@@ -51,15 +55,29 @@ range (s, e) = T.take ((fromIntegral e) - (fromIntegral s) + 1 ) . T.drop s
 toInt :: T.Text -> Int
 toInt = read . T.unpack
 
+toInt' :: T.Text -> Int
+toInt' xs = sum $ zipNumbers (map (C.digitToInt . T.head) (T.chunksOf 1 (T.reverse xs))) tens
+            where tens = map (\x->10^x) [0..n-1]
+                  --zipNumbers f t = (*) <$> f <*> t
+                  zipNumbers f t = fmap pairMultiply (zip f t)                  
+                  n = T.length xs
+                  pairMultiply (x, y) = x * y
+
+
 toDouble :: T.Text -> Double
-toDouble = read . T.unpack
+toDouble x = (read . T.unpack) x :: Double
 
 readInt :: Int -> T.Text
 readInt = T.pack . show
 
+
 readDouble :: Double -> T.Text
 readDouble = T.pack . show 
 
+-- don't know how much performance penalty will take from strict text to string to lazy text; 
+-- quick test show not much edge 35sec over 37sec
+readDouble' :: Double -> T.Text
+readDouble' d = T.pack $ TS.unpack $ Db.toFixed 3 d
 -- 
 chop :: T.Text -> T.Text
 chop "" = ""
